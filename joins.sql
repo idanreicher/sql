@@ -212,3 +212,49 @@ select t1.ID as T1IID, t1.Value as T1Value,
 from natural1 t1
  left join natural2 t2  using (ID , VALUE);
 
+
+/* UNION / UNION ALL
+combines two or more select statments into one resut set
+ each select statment must have the same number of collumns
+ auto remove duplicate rows unless using UNION ALL
+ can only have one order by clause
+ 
+ simulates full outer join as using left  and right jion with union
+
+*/
+
+select t1.ID as T1ID, t1.Value as T1Value
+from natural1 t1
+union all
+select t2.ID as T2ID, t2.Value as T2Value
+from natural2 t2;
+
+select t1.ID as T1ID, t1.Value as T1Value
+from natural1 t1
+union 
+select t2.ID as T2ID, t2.Value as T2Value
+from natural2 t2;
+
+select t1.ID as T1ID, t1.Value as T1Value
+from natural1 t1
+union all
+select t2.ID as T2ID, t2.Value as T2Value
+from natural2 t2
+order by T1Value DESc;
+
+/* full outer join simulation */
+
+select t1.ID as T1ID, t1.Value as T1Value
+from natural1 t1
+left outer join natural2 t2 on t1.Id = t2.ID
+union 
+select t2.ID as T2ID, t2.Value as T2Value
+from natural1 t1
+right outer join natural2 t2 on t1.Id = t2.ID;
+
+
+
+
+
+
+
