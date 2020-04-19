@@ -246,7 +246,7 @@ order by T1Value DESc;
 
 select t1.ID as T1ID, t1.Value as T1Value
 from natural1 t1
-left outer join natural2 t2 on t1.Id = t2.ID
+left join natural2 t2 on t1.Id = t2.ID
 union 
 select t2.ID as T2ID, t2.Value as T2Value
 from natural1 t1
