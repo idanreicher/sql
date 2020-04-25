@@ -1,6 +1,6 @@
 /*
 	sub query is a nested query
-    where thre reuslts ofone sub query 
+    where thre reuslts of one sub query 
     can be used in another qouery via
     relational operator or aggregatioan function
     
