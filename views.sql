@@ -45,3 +45,62 @@ select * from vw_castPayment;
 
 select * from vw_castPayment
 inner join rental r on r.rental_id = vw_castPayment.rental_id;
+
+/*
+DML amd Restriction*/
+create view DML_Operation
+as
+select language_id , name, last_update
+from language;
+
+select * from DML_Operation;
+
+/*
+insert update and delete are possible in a view 
+delete is possible only is there is a single base table
+
+restrictions marked as with check option will upadte insert and delete 
+only to the conditions of the view 
+***but does not apply to the base table
+
+*/
+drop view DML_chack;
+create view DML_chack
+as 
+select language_id, name, last_update
+from language lang
+where last_update = '2006-02-15 05:02:19'
+with check option;
+
+select * from DML_chack;
+
+insert into DML_chack
+(name, last_update)
+values('hebrew', now());#error 
+
+insert into DML_chack
+(name, last_update)
+values('hebrew', '2006-02-15 05:02:19');#inserten into base table
+
+select language_id, name, last_update
+from language lang;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
